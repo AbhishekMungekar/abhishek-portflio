@@ -1,0 +1,56 @@
+<div class="container contact-section">
+  <div class="contactSection-heading text-center lh-1 mb-5 min-gap">
+    <p class="s-font text-capitalize">get in touch</p>
+    <h2 class="l-font">Contact Me</h2>
+  </div>
+  <form
+    class="border border-dark p-4 rounded form-width m-auto"
+    [formGroup]="contactMe"
+    (submit)="data()"
+   
+  >
+ 
+    <div class="form-group my-4">
+      <input
+        type="text"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        placeholder="Name"
+        formControlName="name"
+      />
+      <div
+        class="text-danger my-2"
+        *ngIf="contactMe.controls?.['name']?.touched"
+      >
+        <span *ngIf="contactMe.controls?.['name']?.errors?.['required']"
+          >This field is required</span
+        >
+        <span *ngIf="contactMe.controls?.['name']?.errors?.['minlength']"
+          >Minimum 1 length is required</span
+        >
+      </div>
+    </div>
+    <div class="form-group my-4">
+      <input
+        type="email"
+        class="form-control"
+        id="exampleInputPassword1"
+        placeholder="Email"
+        formControlName="email"
+      />
+      <div class="text-danger my-2" *ngIf="contactMe.controls?.['email']?.touched">
+        <span *ngIf="contactMe.controls?.['email']?.errors?.['required']">This Field is required</span>
+        <span *ngIf="contactMe.controls?.['email']?.errors?.['email']">Please enter valid email ID</span>
+    </div>
+    </div>
+    <div class="form-group my-4">
+      <textarea
+        placeholder="Send message"
+        class="form-control"
+        formControlName="message"
+      ></textarea>
+    </div>
+    <button type="submit" class="btn btn-dark rounded">Submit</button>
+  </form>
+</div>
